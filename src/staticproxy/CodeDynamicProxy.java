@@ -24,6 +24,7 @@ public class CodeDynamicProxy implements InvocationHandler {
 		Object result=method.invoke(coder, args);
 		System.out.println("执行后时间:"+System.currentTimeMillis());
 		return result;
+		
 	}
 	
 }
