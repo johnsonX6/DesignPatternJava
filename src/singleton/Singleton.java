@@ -4,6 +4,7 @@ package singleton;
  * @author qzhen
  * 优点：线程安全 加载速度快 延迟加载
  */
+//推荐使用
 public class Singleton {
 	
 	private Singleton(){	};
