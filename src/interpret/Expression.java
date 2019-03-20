@@ -1,0 +1,5 @@
+package interpret;
+
+public interface Expression {
+	public boolean interpret(String context);
+}

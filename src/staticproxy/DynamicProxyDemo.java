@@ -15,6 +15,7 @@ public class DynamicProxyDemo {
 	public static void main(String[] args) {
 		//抽象类
 		ICoder coder=new JavaCoder("zhang");
+		ICoder coder_li=new JavaCoder("Li");
 		//中介类实例
 		InvocationHandler handler=new CodeDynamicProxy(coder);
 		//得到类加载器
@@ -23,6 +24,16 @@ public class DynamicProxyDemo {
 		ICoder  proxy=(ICoder)Proxy.newProxyInstance(c1, coder.getClass().getInterfaces(), handler);
 		//执行代理
 		proxy.implDemand("Add user management");
+		proxy(coder,"zhang impl a demand");
+		proxy(coder_li,"li add a new module");
+	}
+	
+	public static void proxy(ICoder coder,String content){
+		InvocationHandler handler=new CodeDynamicProxy(coder);
+		ClassLoader c2=coder.getClass().getClassLoader();
+		ICoder proxy=(ICoder)Proxy.newProxyInstance(c2, coder.getClass().getInterfaces(), handler);
+		proxy.implDemand("content");
+		
 	}
 	
 }
